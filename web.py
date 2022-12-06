@@ -20,10 +20,12 @@ for index, todo in enumerate(todos):
     if checkbox:
         todos.pop(index)
         functions.write_todos(todos)
-        del st.session_state[todo]  # This line of code helps to keep updating the session_state object
+        # This line of code helps to keep updating the session_state object
         # fyi session_state object is a dictionary
-        st.experimental_rerun()  # experimental_rerun function reruns the whole code gain
+        del st.session_state[todo]
+        # experimental_rerun function reruns the whole code gain
         # to be clear from the very beginning "import streamlit as st" not the for loop.
+        st.experimental_rerun()
 
 
 st.text_input("", placeholder="Add new todo....",
